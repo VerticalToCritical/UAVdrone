@@ -5,8 +5,8 @@ angular.module('drone.battlefield').controller('battlefieldController', function
     $scope.setupBattleField = function (formvalid) {
         if (formvalid) {
             droneService.setupBattleField($scope.battlefield).then(function (data) {
-                $scope.battlefield.width = data.Width;
-                $scope.battlefield.height = data.Height;
+                $scope.battlefield.Width = data.Width;
+                $scope.battlefield.Height = data.Height;
             });
         } else {
 

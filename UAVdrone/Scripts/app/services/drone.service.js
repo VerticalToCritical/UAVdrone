@@ -2,15 +2,15 @@
 angular.module('drone.service').factory('droneService', function ($http, $q) {
     var self = this;
     self.battleField = {
-        width: 0,
-        height: 0
+        Width: 0,
+        Height: 0
     };
 
     return {
-        setupBattleField: function (width, height) {
+        setupBattleField: function (item) {
             var deffered = $q.defer();
-
-            $http.post("/api/Drone/SetupBattlefield", { Width: width, Height: height })
+            
+            $http.post("/api/Drone/SetupBattlefield", { Width : item.Width, Height: item.Height })
                 .success(function (data) {
                     self.battleField = data;
                     deffered.resolve({ result: data });
