@@ -229,6 +229,8 @@
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -264,10 +266,12 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\battlefield.controller.js" />
+    <Content Include="Scripts\app\controllers\setupDrone.controller.js" />
     <Content Include="Scripts\app\modules\droneResult.module.js" />
     <Content Include="Scripts\app\modules\setupDrone.module.js" />
     <Content Include="Scripts\app\services\drone.service.js" />
     <Content Include="Scripts\app\templates\setupBattlefield.html" />
+    <Content Include="Scripts\app\templates\setupDrones.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -288,6 +292,8 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\app\modules\drone.service.module.js" />
     <Content Include="Scripts\app\modules\battlefield.module.js" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1043,6 +1049,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -12,6 +12,9 @@ namespace UAVdrone.Core.Repository.Interface
     {
         BattleField VerifyBattleFieldInit(int? width, int? height);
         List<DronePosition> ExecuteListCommands(BattleField battleField, List<DroneControl> droneControls);
-        
+
+        Dictionary<string, string> GetCompassItems();
+
+        Dictionary<string, string> GetCommands();
     }
 }

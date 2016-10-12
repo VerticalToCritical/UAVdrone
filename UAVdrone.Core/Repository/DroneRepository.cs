@@ -7,6 +7,7 @@ using Elmah;
 using UAVdrone.Core.Model;
 using UAVdrone.Core.Repository.Interface;
 using UAVdrone.Helper.Constants;
+using UAVdrone.Helper.Helper;
 
 namespace UAVdrone.Core.Repository
 {
@@ -42,6 +43,38 @@ namespace UAVdrone.Core.Repository
                     drone.ExecuteCommands(battleField);
                 });
                 return droneControls.Select(p=>p.CurrentPosition).ToList();
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                return null;
+            }
+        }
+
+        public Dictionary<string, string> GetCompassItems()
+        {
+            try
+            {
+                return
+                    Enum.GetValues(typeof(Constant.CompassPoint))
+                        .Cast<Constant.CompassPoint>()
+                        .ToDictionary(key => key.ToString(), value => value.GetDescription());
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                return null;
+            }
+        }
+
+        public Dictionary<string, string> GetCommands()
+        {
+            try
+            {
+                return
+                    Enum.GetValues(typeof(Constant.DroneCommand))
+                        .Cast<Constant.DroneCommand>()
+                        .ToDictionary(key => key.ToString(), value => value.GetDescription());
             }
             catch (Exception ex)
             {

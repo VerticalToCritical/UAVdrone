@@ -1,14 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<link href="/Content/toastr.css" type="text/css" rel="stylesheet"/>
 <div ng-app="app" ng-view></div>
-
+@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/angular")
 <script src="/Scripts/angular-route.js"></script>
+<script src="/Scripts/toastr.js"></script>
 <script src="/Scripts/app/modules/battlefield.module.js"></script>
 <script src="/Scripts/app/controllers/battlefield.controller.js"></script>
 <script src="/Scripts/app/modules/setupDrone.module.js"></script>
+<script src="/Scripts/app/controllers/setupDrone.controller.js"></script>
 <script src="/Scripts/app/modules/droneResult.module.js"></script>
 <script src="/Scripts/app/modules/drone.service.module.js"></script>
 <script src="/Scripts/app/services/drone.service.js"></script>

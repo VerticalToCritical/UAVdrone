@@ -19,6 +19,6 @@ namespace UAVdrone.Core.Model.Interface
         bool ValidateMoveCommand(BattleField batteField);
         void MoveDrone(BattleField battleField, Constant.DroneCommand moveCommand);
         void ExecuteCommands(BattleField battleField);
-        void AddToExecutionResult(Constant.DroneCommand command, string result);
+        void AddToExecutionResult(string result);
     }
 }

@@ -36,6 +36,18 @@ angular.module('drone.service').factory('droneService', function ($http, $q) {
         },
         getBattleField: function () {
             return $q.when(self.battleField);
+        },
+        getAllCompass: function() {
+            return $http.get('/api/Drone/GetCompassItems')
+                .then(function(response) {
+                    return response.data;
+                });
+        },
+        getAllComands: function() {
+            return $http.get('/api/Drone/GetCommands')
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 });

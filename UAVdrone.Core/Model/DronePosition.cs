@@ -77,7 +77,7 @@ namespace UAVdrone.Core.Model
     {
         public DronePosition CurrentPosition { get; set; }
         public List<Constant.DroneCommand> Commands { get; set; }
-        public Dictionary<Constant.DroneCommand, string> ExecutionResult { get; set; }
+        public List<string> ExecutionResult { get; set; }
 
         /// <summary>
         /// method to validate whether drone can move forward by one grid
@@ -126,17 +126,17 @@ namespace UAVdrone.Core.Model
                     if (ValidateMoveCommand(battleField))
                     {
                         CurrentPosition.MoveForward();
-                        AddToExecutionResult(moveCommand, $"Drone moved forward. Current position is X: {CurrentPosition.XCoordinate}, Y: {CurrentPosition.YCoordinate}, Direction: {CurrentPosition.FaceDirection.GetDescription()}");
+                        AddToExecutionResult($"Drone moved forward. Current position is X: {CurrentPosition.XCoordinate}, Y: {CurrentPosition.YCoordinate}, Direction: {CurrentPosition.FaceDirection.GetDescription()}");
                     }
                     else
                     {
-                        AddToExecutionResult(moveCommand, $"Drone cannot move forward because it is on the boundary of battlefield. Position not changed and is still X: {CurrentPosition.XCoordinate}, Y: {CurrentPosition.YCoordinate}, Direction: {CurrentPosition.FaceDirection.GetDescription()}");
+                        AddToExecutionResult($"Drone cannot move forward because it is on the boundary of battlefield. Position not changed and is still X: {CurrentPosition.XCoordinate}, Y: {CurrentPosition.YCoordinate}, Direction: {CurrentPosition.FaceDirection.GetDescription()}");
                     }
                 }
                 else
                 {
                     CurrentPosition.RotateDirection(moveCommand);
-                    AddToExecutionResult(moveCommand, $"Drone changed position. Current position is X: {CurrentPosition.XCoordinate}, Y: {CurrentPosition.YCoordinate}, Direction: {CurrentPosition.FaceDirection.GetDescription()}");
+                    AddToExecutionResult($"Drone changed position. Current position is X: {CurrentPosition.XCoordinate}, Y: {CurrentPosition.YCoordinate}, Direction: {CurrentPosition.FaceDirection.GetDescription()}");
                 }
             }
             catch (Exception ex)
@@ -147,23 +147,16 @@ namespace UAVdrone.Core.Model
 
         public void ExecuteCommands(BattleField battleField)
         {
-            ExecutionResult = new Dictionary<Constant.DroneCommand, string>();
+            ExecutionResult = new List<string>();
             Commands.ForEach(command =>
             {
                 MoveDrone(battleField, command);
             });
         }
 
-        public void AddToExecutionResult(Constant.DroneCommand command, string result)
+        public void AddToExecutionResult(string result)
         {
-            if (ExecutionResult.ContainsKey(command))
-            {
-                ExecutionResult[command] = result;
-            }
-            else
-            {
-                ExecutionResult.Add(command, result);
-            }
+            ExecutionResult.Add(result);            
         }
     }
 }
