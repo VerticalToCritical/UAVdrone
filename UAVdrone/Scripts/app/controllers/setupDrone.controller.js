@@ -56,7 +56,7 @@ angular.module('drone.setupDrone')
 
             $scope.runCommands = function () {
                 droneService.runCommand($scope.drones).then(function (data){
-                    $location('/result');
+                    $location.path('/result');
                 })
                 .catch(function() {
                         toastr.error('Run drone commands failed');

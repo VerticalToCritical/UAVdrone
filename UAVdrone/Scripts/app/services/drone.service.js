@@ -6,6 +6,8 @@ angular.module('drone.service').factory('droneService', function ($http, $q) {
         Height: 0
     };
 
+    self.results = [];    
+
     return {
         setupBattleField: function (item) {
             var deffered = $q.defer();
@@ -27,9 +29,11 @@ angular.module('drone.service').factory('droneService', function ($http, $q) {
 
             $http.post("/api/Drone/RunDroneCommands", { BattleField: self.battleField, Drones: drones })
                 .success(function (data) {
+                    self.results = data;
                     deffered.resolve({ result: data });
                 })
             .error(function (msg, code) {
+                self.results = [];
                 deffered.reject(msg);
             });
             return deffered.promise;
@@ -48,6 +52,19 @@ angular.module('drone.service').factory('droneService', function ($http, $q) {
                 .then(function (response) {
                     return response.data;
                 });
+        },
+
+        getCommandResults: function () {
+            return $q.when(self.results);
+        },
+        resetCommandResults: function () {
+            self.results = [];
+        },
+        resetBattleField: function () {
+            self.battleField = {
+                Width: 0,
+                Height: 0
+            }
         }
     }
 });

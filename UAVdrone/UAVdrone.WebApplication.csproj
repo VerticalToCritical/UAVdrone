@@ -266,12 +266,14 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\battlefield.controller.js" />
+    <Content Include="Scripts\app\controllers\droneResult.controller.js" />
     <Content Include="Scripts\app\controllers\setupDrone.controller.js" />
     <Content Include="Scripts\app\modules\droneResult.module.js" />
     <Content Include="Scripts\app\modules\setupDrone.module.js" />
     <Content Include="Scripts\app\services\drone.service.js" />
     <Content Include="Scripts\app\templates\setupBattlefield.html" />
     <Content Include="Scripts\app\templates\setupDrones.html" />
+    <Content Include="Scripts\app\templates\viewResults.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

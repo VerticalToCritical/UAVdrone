@@ -35,14 +35,14 @@ namespace UAVdrone.Core.Repository
             }
         }        
 
-        public List<DronePosition> ExecuteListCommands(BattleField battleField, List<DroneControl> droneControls)
+        public List<DroneControl> ExecuteListCommands(BattleField battleField, List<DroneControl> droneControls)
         {
             try
             {
                 droneControls.ForEach(drone => {
                     drone.ExecuteCommands(battleField);
                 });
-                return droneControls.Select(p=>p.CurrentPosition).ToList();
+                return droneControls;
             }
             catch (Exception ex)
             {

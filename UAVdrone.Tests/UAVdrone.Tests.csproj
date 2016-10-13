@@ -34,7 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -82,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DroneTestCases\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -92,6 +95,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UAVdrone.Core\UAVdrone.Core.csproj">
+      <Project>{582f1a68-5d5a-4564-8f0f-ef71e3f563dc}</Project>
+      <Name>UAVdrone.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UAVdrone.Helper\UAVdrone.Helper.csproj">
+      <Project>{d73f7ce4-98f8-409d-af67-d7a330aa2cc8}</Project>
+      <Name>UAVdrone.Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UAVdrone\UAVdrone.WebApplication.csproj">
       <Project>{7569A5C3-03D4-4AC0-9CF7-5719F23615F2}</Project>
       <Name>UAVdrone.WebApplication</Name>

@@ -1,0 +1,37 @@
+﻿<h3>
+    View Results
+</h3>
+<hr />
+<table class="table">
+    <thead>
+    <tr>
+        <th class="col-m-4">
+            Initial Position
+        </th>
+        <th class="col-m-4">
+            Commands
+        </th>
+        <th class="col-m-4">
+            Results
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="result in results">
+        <td>
+            {{result.initPosition}}
+        </td>
+        <td>
+            {{result.commands}}
+        </td>
+        <td>
+            {{result.result}}
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <button type="button" class="btn btn-default" ng-click="setupDrone()">
+        <span class="glyphicon glyphicon-chevron-left"></span> Setup Drones
+    </button>
+</div>

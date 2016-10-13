@@ -6,9 +6,12 @@ angular.module('drone.battlefield').controller('battlefieldController', function
         if (formvalid) {
             droneService.setupBattleField($scope.battlefield).then(function (data) {
                 $location.path('/setup');
+            })
+            .catch(function (msg) {
+                toastr.error(msg.Message);
             });
         } else {
-            
+
         }
     }
 });

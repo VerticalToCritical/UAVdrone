@@ -75,6 +75,7 @@ namespace UAVdrone.Core.Model
 
     public class DroneControl : IDroneControlTask
     {
+        public DronePosition InitPosition { get; set; }
         public DronePosition CurrentPosition { get; set; }
         public List<Constant.DroneCommand> Commands { get; set; }
         public List<string> ExecutionResult { get; set; }
