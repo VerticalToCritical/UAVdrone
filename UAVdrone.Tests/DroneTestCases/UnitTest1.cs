@@ -72,8 +72,8 @@ namespace UAVdrone.Tests.DroneTestCases
         {
             var battlefield = _repository.VerifyBattleFieldInit(5, 5);
             Assert.IsNotNull(battlefield);
-            Assert.Equals(5, battlefield.Width);
-            Assert.Equals(5, battlefield.Height);
+            Assert.AreEqual(5, battlefield.Width);
+            Assert.AreEqual(5, battlefield.Height);
         }
 
         /// <summary>
@@ -84,9 +84,20 @@ namespace UAVdrone.Tests.DroneTestCases
         public void Test_Move_Drone()
         {
             _demoDrone.ExecuteCommands(_demoBattleField);
-            Assert.Equals(_demoDrone.CurrentPosition.XCoordinate, 0);
-            Assert.Equals(_demoDrone.CurrentPosition.YCoordinate, 3);
-            Assert.Equals(_demoDrone.CurrentPosition.FaceDirection, Constant.CompassPoint.W);
+            Assert.AreEqual(_demoDrone.CurrentPosition.XCoordinate, 0);
+            Assert.AreEqual(_demoDrone.CurrentPosition.YCoordinate, 3);
+            Assert.AreEqual(_demoDrone.CurrentPosition.FaceDirection, Constant.CompassPoint.W);
+        }
+
+        /// <summary>
+        /// validate whether the drone can still move forward
+        /// </summary>
+        [TestMethod]
+        public void Test_Validate_Move_Drone()
+        {
+            _demoDrone.MoveDrone(_demoBattleField, Constant.DroneCommand.L);
+            var result = _demoDrone.ValidateMoveCommand(_demoBattleField);
+            Assert.IsFalse(result);
         }
     }
 }
