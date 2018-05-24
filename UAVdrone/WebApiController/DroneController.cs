@@ -17,14 +17,18 @@ namespace UAVdrone.WebApiController
     public class DroneController : ApiController
     {
         private IDroneRepository repo;
+
+        public DroneController(IDroneRepository drone)
+        {
+            repo = drone;
+        }
         [HttpPost]
         public HttpResponseMessage SetupBattlefield(BattleFieldModels battlefield)
         {
             try
             {
                 if (battlefield == null || !ModelState.IsValid) throw new Exception("Invalid battlefield width and height");
-
-                repo = new DroneRepository();
+                
                 var result = repo.VerifyBattleFieldInit(battlefield.Width, battlefield.Height);
                 if (result == null) throw new Exception("Initialize battlefield failed. Invalid battlefield size.");
 
@@ -41,8 +45,7 @@ namespace UAVdrone.WebApiController
         public HttpResponseMessage GetCompassItems()
         {
             try
-            {
-                repo = new DroneRepository();
+            {                
                 var result = repo.GetCompassItems().Select(p => new
                 {
                     p.Key,
@@ -62,8 +65,7 @@ namespace UAVdrone.WebApiController
         public HttpResponseMessage GetCommands()
         {
             try
-            {
-                repo = new DroneRepository();
+            {                
                 var result = repo.GetCommands().Select(p => new
                 {
                     p.Key,
@@ -101,8 +103,7 @@ namespace UAVdrone.WebApiController
                     });
                     return commands;
                 };
-
-                repo = new DroneRepository();
+                
                 if (model?.BattleField == null) throw new Exception("Battlefield is not initialized.");
 
                 var battlefield = new BattleField
